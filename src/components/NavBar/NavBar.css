@@ -25,6 +25,10 @@
     font-size: 16px;
     color: black;
 }
+.header-primary .cart-btn{
+    position: absolute;
+    right: 10px;
+}
 .header-primary .navbar .navbar__btn:hover {
     font-weight: 600;
 }
