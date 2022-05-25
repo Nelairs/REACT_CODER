@@ -5,7 +5,7 @@
     display: flex;
 }
 .container-logo {
-    width: 150px;
+    width: 100px;
 }
 .container-logo img {
     width: 100%;
@@ -29,12 +29,16 @@
     position: absolute;
     right: 10px;
 }
+
 .header-primary .navbar .navbar__btn:hover {
     font-weight: 600;
+    font-size: 20px;
+
 }
 
 .header-primary .navbar .navbar__btn:hover:before {
     width: 85%;
+    color:blueviolet;
 }
 
 .header-primary .navbar .navbar__btn:before {

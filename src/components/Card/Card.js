@@ -1,16 +1,25 @@
-import './Card.css'
+import './Card.css';
+import * as React from 'react';
+import Modal from '../Modal/Modal';
+import  MsgContainer from '../MsgContainer/MsgContainer';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Button } from '@mui/material';
 import  {useState}  from    'react';
 
-//Functional Component
-const CardItem = ({ image, title, price }) => {
-    // console.log("Propiedades de Card: ")
+
+
+const CardItem = ({ image, title, price,   stock}) => {
+
+
 const   [count, setCount]   =   useState(0);
 
+
 const   addCount    =   ()  =>  {
-    setCount(count + 1)
+
+    if(count < stock){
+        setCount(count + 1)
+    }
 }
 
 const   removeCount =   ()  =>  {
@@ -22,19 +31,23 @@ const   removeCount =   ()  =>  {
             <CardContent>
                 <div className="card-item">
                     <div>
-                        <img src={`./${image}`} /> 
+                        <img src={`./${image}`} alt=''/> 
                     </div>
                     <p>{title}</p>
                     <span>$ {price}</span>
+                    <MsgContainer message={'Stock: ' + stock}/>
+                    <Modal/>
                         <div    className='count-item'>
                         <Button onClick={removeCount}   disabled={count === 0}>-</Button>
                         <p>{count}</p>
-                        <Button onClick={addCount}>+</Button>
+                        <Button onClick={addCount} disabled={count === stock}>+</Button>
                         </div>
                     
-                    <Button variant={'contained'} >Detalle</Button>
+                        <Button variant={'contained'} className="card-item-button">Comprar</Button>
                 </div>
+               
             </CardContent>
+            
         </Card>
     )
 }

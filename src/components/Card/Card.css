@@ -7,3 +7,20 @@
 .card-item p {font-size: 18px;font-weight: 700;margin-top: 10px;margin-bottom: 10px;}
 
 .card-item span {margin-bottom: 10px;font-size: 16px;}
+
+.count-item {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.card-modal{
+    position: relative; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
