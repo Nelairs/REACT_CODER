@@ -1,0 +1,16 @@
+
+
+
+.box-modal{
+    background-color: antiquewhite;
+    display: flex;
+    position: absolute;
+    left: 50%;
+    width: 300px;
+   
+}
+
+.box-modal .item-detail-container{
+    width: 100%;
+    height: 100%;
+}

@@ -2,7 +2,9 @@ import * as React from 'react';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
-import  Carrousel   from '../Carrousel/Carrousel';
+import  ItemDetailContainer from  '../ItemDetailContainer/ItemDetailContainer'
+import  './Modal.css'
+
 
 export default function BasicModal() {
   const [open, setOpen] = React.useState(false);
@@ -10,7 +12,7 @@ export default function BasicModal() {
   const handleClose = () => setOpen(false);
 
   return (
-    <div >
+    <div className='container-modal'>
       <Button onClick={handleOpen}>Open modal</Button>
       <Modal
         
@@ -19,14 +21,9 @@ export default function BasicModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box className='box-modal'sx={{
-          position: 'relative',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
-          height: '100%',
-        }}>
-          <Carrousel/>
+        <Box className='box-modal'>
+          
+          <ItemDetailContainer/>
         </Box>
       </Modal>
     </div>

@@ -13,9 +13,10 @@ function App() {
       <NavBar/> 
 
       <div className='general-container'>
+
         <MsgContainer message={'Bienvenidos a la pagina!'}/>
         <CardList title={'Productos Recomendados'}/>
-        <CardList title={'Productos Relacionados'}/>
+        
       </div>
       
     </div>

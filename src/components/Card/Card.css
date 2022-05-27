@@ -17,10 +17,4 @@
     margin-bottom: 10px;
 }
 
-.card-modal{
-    position: relative; 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-}
+

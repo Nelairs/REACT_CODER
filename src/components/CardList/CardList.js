@@ -18,7 +18,7 @@ const CardList = ({title}) => {
                 <CardItem title={"Maceta Calavera"} price={3200} image={"macetas3.jpg"} stock={8}/>
             </Grid>
             <Grid item md={3}>
-                <CardItem title={"Maceta Calavera"} price={3200} image={"macetas3.jpg"} stock={10}/>
+                <CardItem title={"Maceta Calavera 2"} price={3200} image={"macetas4.jpeg"} stock={10}/>
             </Grid>
         </Grid>
         </>
