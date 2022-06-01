@@ -16,5 +16,11 @@
     border-bottom: 1px solid #ccc;
     margin-bottom: 10px;
 }
+div.MuiModal-root.css-79ws1d-MuiModal-root{
+    position: fixed;
+    z-index: 1300;
 
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

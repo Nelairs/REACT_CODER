@@ -31,12 +31,12 @@ const   removeCount =   ()  =>  {
             <CardContent    className='cardContent'>
                 <div className="card-item">
                     <div>
-                        <img src={`./${image}`} alt=''/> 
+                        <img src={`./${image[0]}`} alt=''/> 
                     </div>
                     <p>{title}</p>
                     <span>$ {price}</span>
                     <MsgContainer message={'Stock: ' + stock}/>
-                    <Modal  className='card-modal'/>
+                    <Modal  className='card-modal'  image={image} title={title} price={price} stock={stock} />
                         <div    className='count-item'>
                         <Button onClick={removeCount}   disabled={count === 0}>-</Button>
                         <p>{count}</p>

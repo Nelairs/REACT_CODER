@@ -5,29 +5,14 @@ import * as React from 'react';
 import  './ItemDetailContainer.css'
 
 
-const ItemDetailContainer   =   ()  =>  {
-    const   [producto,  setProduct]  =   useState();
-
-    const   getItem =   ()  =>  {
-        return  new Promise(    (res,   rej)    =>  {
-            setTimeout(()   =>  {
-                res(productoSingle);
-            },  2000)
-        })
-    }
-
-    useEffect(()    =>  {
-        getItem()
-        .then(  (res)   => {
-            setProduct(res);
-        })
-    },  [])
+const ItemDetailContainer   =   ({image, title,  price,    stock})  =>  {
+    
 
     return(
         <div    className='item-detail-container'>
         
             <h2>CONTENEDOR ITEM</h2>
-            <ItemDetail data={productoSingle}/>
+            <ItemDetail data={productoSingle}   image={image} title={title} price={price} stock={stock}/>
         </div>
     )
 }
