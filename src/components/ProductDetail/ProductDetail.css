@@ -1,0 +1,17 @@
+div.product-detail-container{
+
+    display: flex;
+    flex-direction: row;
+}
+
+.product-detail-container .img-container{
+
+    max-width: 500px;
+    max-height: 500px;
+}
+
+.product-detail-container .img-container img{
+
+    width: 500px;
+    height: 500px;
+}

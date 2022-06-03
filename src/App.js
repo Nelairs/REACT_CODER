@@ -5,6 +5,8 @@ import CardList from "./components/CardList/CardList";
 import MsgContainer from "./components/MsgContainer/MsgContainer";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ContactPage from "./components/ContactPage/ContactPage";
+import  ProductDetail from './components/ProductDetail/ProductDetail';
+import productos from'./utils/productosMock.utils';
 
 function App() {
   return (
@@ -19,12 +21,12 @@ function App() {
             element={
               <div className="general-container">
                 <MsgContainer message={"Bienvenidos a la pagina!"} />
-                <CardList title={"Productos Recomendados"} />
+                <CardList title={"Productos Recomendados"} productos={productos}/>
               </div>
             }
           ></Route>
           <Route path="/contacto" element={<ContactPage />}></Route>
-          <Route  path="/producto/:id"  element={<ContactPage />}></Route>
+          <Route  path="/producto/:id"  element={<ProductDetail productos={productos}/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
