@@ -6,10 +6,10 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Button } from '@mui/material';
 import  {useState}  from    'react';
+import { Link } from 'react-router-dom';
 
 
-
-const CardItem = ({ image, title, price,   stock}) => {
+const CardItem = ({ image, title, price,   stock, id}) => {
 
 
 const   [count, setCount]   =   useState(0);
@@ -31,7 +31,9 @@ const   removeCount =   ()  =>  {
             <CardContent    className='cardContent'>
                 <div className="card-item">
                     <div>
+                        <Link to={`/producto/${id}`}>
                         <img src={`./${image[0]}`} alt=''/> 
+                        </Link>
                     </div>
                     <p>{title}</p>
                     <span>$ {price}</span>
@@ -52,4 +54,4 @@ const   removeCount =   ()  =>  {
     )
 }
 
-export default CardItem
+export default CardItem;

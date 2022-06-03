@@ -4,7 +4,7 @@ import  AppBar  from '@mui/material/AppBar';
 import  Toolbar from    '@mui/material/Toolbar';
 import  Button  from    '@mui/material/Button';
 import  CartWidget  from '../CartWidget/CartWidget.js';
-
+import {Link}   from 'react-router-dom';
 
 
 const   NavBar  =   ()  =>  {
@@ -13,20 +13,16 @@ const   NavBar  =   ()  =>  {
         <AppBar position="static"   className='header-primary'>
             <Toolbar>
                 <div    className='container-logo'>
-                    <img    src='./3d_icon.png' alt=''/>
+                    <Link to={'/'}><img    src='./3d_icon.png' alt=''/></Link>
                 </div>
                 <ul className='navbar'>
                     <li>
-                        <Button disableRipple   style={{backgroundColor:    'transparent'}}variant='text'   className='navbar_btn'>Inicio</Button>
+                    <Link to={'/'}><Button disableRipple   style={{backgroundColor:    'transparent'}}variant='text'   className='navbar_btn'>Inicio</Button></Link>
                     </li>
                     <li>
-                        <Button disableRipple   style={{backgroundColor:    'transparent'}}variant='text'   className='navbar_btn'>Productos</Button>
-                    </li>
-                    <li>
-                        <Button disableRipple   style={{backgroundColor:    'transparent'}}variant='text'   className='navbar_btn'>FAQs</Button>
-                    </li>
-                    <li>
+                        <Link to={'/contacto'}>
                         <Button disableRipple   style={{backgroundColor:    'transparent'}}variant='text'   className='navbar_btn'>Contacto</Button>
+                        </Link>
                     </li>
                 </ul>
                 <CartWidget/>

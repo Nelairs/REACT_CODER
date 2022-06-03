@@ -15,7 +15,7 @@ export default function BasicModal({ image,  title, price, stock}) {
 
   return (
     <div className="container-modal">
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen}>Detalle</Button>
       <Modal
         open={open}
         onClose={handleClose}
