@@ -45,7 +45,7 @@ const   removeCount =   ()  =>  {
                         <Button onClick={addCount} disabled={count === stock}>+</Button>
                         </div>
                     
-                        <Button variant={'contained'} className="card-item-button">Comprar</Button>
+                        <Button variant={'contained'} className="card-item-button">Agregar a carrito</Button>
                 </div>
                
             </CardContent>

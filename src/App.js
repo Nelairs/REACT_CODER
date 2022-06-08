@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ContactPage from "./components/ContactPage/ContactPage";
 import  ProductDetail from './components/ProductDetail/ProductDetail';
 import productos from'./utils/productosMock.utils';
+import  CartDetail  from  './components/CartDetail/CartDetail';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           ></Route>
           <Route path="/contacto" element={<ContactPage />}></Route>
           <Route  path="/producto/:id"  element={<ProductDetail productos={productos}/>}></Route>
+          <Route  path="/cart"  element={<CartDetail  />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
