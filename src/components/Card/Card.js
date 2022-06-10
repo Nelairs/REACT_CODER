@@ -1,19 +1,19 @@
 import './Card.css';
-import * as React from 'react';
+import React from 'react';
 import Modal from '../Modal/Modal';
 import  MsgContainer from '../MsgContainer/MsgContainer';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import { Button } from '@mui/material';
-import  {useState}  from    'react';
+import  {useState,  useContext}  from    'react';
 import { Link } from 'react-router-dom';
-
+import CartContext  from '../../context/CartContext';
 
 const CardItem = ({ image, title, price,   stock, id}) => {
 
 
 const   [count, setCount]   =   useState(0);
-
+const {addToCart}   =   useContext(CartContext)
 
 const   addCount    =   ()  =>  {
 
@@ -45,7 +45,8 @@ const   removeCount =   ()  =>  {
                         <Button onClick={addCount} disabled={count === stock}>+</Button>
                         </div>
                     
-                        <Button variant={'contained'} className="card-item-button">Agregar a carrito</Button>
+                        <Button variant={'contained'} className="card-item-button"  
+                            >Agregar a carrito</Button>
                 </div>
                
             </CardContent>
