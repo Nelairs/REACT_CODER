@@ -15,6 +15,7 @@ const CardItem = ({ image, title, price,   stock, id}) => {
 const   [count, setCount]   =   useState(0);
 const {addToCart}   =   useContext(CartContext)
 
+
 const   addCount    =   ()  =>  {
 
     if(count < stock){
@@ -45,8 +46,10 @@ const   removeCount =   ()  =>  {
                         <Button onClick={addCount} disabled={count === stock}>+</Button>
                         </div>
                     
-                        <Button variant={'contained'} className="card-item-button"  
-                            >Agregar a carrito</Button>
+                        <Button variant={'contained'} className="card-item-button" 
+                            onClick={()  =>  addToCart({image, title, price,   stock, id})}>
+                            Agregar a carrito
+                        </Button>
                 </div>
                
             </CardContent>

@@ -1,15 +1,18 @@
 import  './ProductDetail.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext} from 'react';
 import { useParams, useNavigate, Link  } from 'react-router-dom';
 import { Divider,Button } from '@mui/material';
+import CartContext  from '../../context/CartContext';
 
 const ProductDetail = ({productos})  =>  {
-    
+
     const   navigate = useNavigate()
     const   {id}    =   useParams();
     const [product , setProduct] = useState({})
     const   [count, setCount]   =   useState(1);
     const   [showAddCart,   setShowAddCart] =   useState(true)
+
+    const {addToCart}   =   useContext(CartContext)
 
     const   addCount    =   ()  =>  {
     
@@ -24,11 +27,13 @@ const ProductDetail = ({productos})  =>  {
 
     useEffect(() => {
       
-        console.log("productFilter: ", productFilter)
+        //console.log("productFilter: ", productFilter)
         if(productFilter === undefined){
             navigate('/notFound')
         }else {
+            
             setProduct(productFilter)
+            const   {image, title, price,   stock}  =   productFilter
         }
     }, [id])
 
@@ -69,7 +74,10 @@ const ProductDetail = ({productos})  =>  {
                             <Button onClick={removeCount}   disabled={count === 0}>-</Button>
                             <p>{count}</p>
                             <Button onClick={addCount} disabled={count === productFilter.stock}>+</Button>
-                            <Button variant={'text'} className="card-item-button" onClick={()  =>  setShowAddCart(false)}>Agregar al carrito</Button>
+                            <Button variant={'text'} className="card-item-button" 
+                                onClick={()  =>  {setShowAddCart(false); addToCart({productFilter});}}>
+                                Agregar al carrito
+                            </Button>
                         </div>
                         }
                 </div>

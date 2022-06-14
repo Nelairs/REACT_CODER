@@ -3,7 +3,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import DeleteIcon from '@mui/icons-material/Delete';
-import CartContext, {CartProvider} from '../../context/CartContext'
+import CartContext from '../../context/CartContext.js'
 import { Link } from 'react-router-dom';
 
 const CartWidget = () =>  {
@@ -39,14 +39,14 @@ const CartWidget = () =>  {
                     {cartListItems.length === 0 && (
                         <>
                             <p>No hay productos agregados al carrito</p>
-                            <Link to="/products/remeras" >Empezar a comprar</Link>
+                            <Link to="/" >Empezar a comprar</Link>
                         </>
                     )}
                     {cartListItems.map( (item) => {
                         return(
                         <div className='item-cart-prod' key={item.id}>
                             <div className='cart-prod__image'>
-                                <img src={`/${item.image}`} alt="prod carrito" />
+                                <img src={`/${item.image}`} alt="" />
                             </div>
                             <div className='cart-prod__info'>
                                 <p>{item.title}</p>

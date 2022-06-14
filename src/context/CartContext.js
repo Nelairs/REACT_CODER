@@ -3,7 +3,7 @@ import React, { createContext, useState } from "react";
 const CartContext = createContext();
 
 const CartProvider = ({ children }) => {
-  const [cartListItems, setCartListItems] = useState(['aaaa']);
+  const [cartListItems, setCartListItems] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
 
   const addToCart = (product) => {
