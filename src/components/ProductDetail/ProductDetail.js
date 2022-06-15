@@ -33,29 +33,31 @@ const ProductDetail = ({productos})  =>  {
         }else {
             
             setProduct(productFilter)
-            const   {image, title, price,   stock}  =   productFilter
+
         }
     }, [id])
 
     const productFilter = productos.find( (product) => {
         return product.id == id
     })
+
+    const   {image, title, price,   stock, description}  =   productFilter
     return  (
         
         <div    className="product-detail-container">
             
             <div    className="img-container">
                 <div    className='img-container-primary'>
-                    <img    src={`../${productFilter.image[0]}`}></img>
+                    <img    src={`../${image[0]}`}></img>
                 </div>
             </div>
 
             <div    className="detail-container">
-                <h1>{productFilter.title}</h1>
+                <h1>{title}</h1>
                 <Divider/>
-                <h2>${productFilter.price}</h2>
+                <h2>${price}</h2>
                 <Divider/>
-                <h3>{productFilter.description}</h3>
+                <h3>{description}</h3>
                 <Divider/>
                 <div    className='buttons-detail'>
                         {!showAddCart   ?   
@@ -73,9 +75,10 @@ const ProductDetail = ({productos})  =>  {
                         <div    className='count-item'>
                             <Button onClick={removeCount}   disabled={count === 0}>-</Button>
                             <p>{count}</p>
-                            <Button onClick={addCount} disabled={count === productFilter.stock}>+</Button>
+                            <Button onClick={addCount} disabled={count === stock}>+</Button>
                             <Button variant={'text'} className="card-item-button" 
-                                onClick={()  =>  {setShowAddCart(false); addToCart({productFilter});}}>
+                                onClick={()  =>  {setShowAddCart(false); 
+                                addToCart({image, title, price,   stock});}}>
                                 Agregar al carrito
                             </Button>
                         </div>

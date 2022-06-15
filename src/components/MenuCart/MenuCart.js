@@ -1,13 +1,15 @@
-import React,   { useState, useContext } from 'react';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import React,   {useContext,    useState} from 'react';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import DeleteIcon from '@mui/icons-material/Delete';
-import CartContext from '../../context/CartContext.js'
 import { Link } from 'react-router-dom';
-import './CartWidget.css'
+import CartContext from '../../context/CartContext.js'
 
-const CartWidget = () =>  {
+
+
+
+const   MenuCart    =   ()  =>  {
+    
     const { cartListItems } = useContext(CartContext)
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
@@ -19,15 +21,7 @@ const CartWidget = () =>  {
     };
 
     return(
-        <div className='cart-container-icon'>
-            <ShoppingCartIcon 
-                color={'primary'} 
-                aria-controls={open ? 'basic-menu' : undefined}
-                aria-haspopup="true"
-                aria-expanded={open ? 'true' : undefined}
-                onClick={handleClick}
-            />
-            <Menu
+        <Menu
                 id="basic-menu"
                 anchorEl={anchorEl}
                 open={open}
@@ -41,12 +35,10 @@ const CartWidget = () =>  {
                         <>
                             <p>No hay productos agregados al carrito</p>
                             <Link to="/" >Empezar a comprar</Link>
-                            <Link to={'/cart'}><ShoppingCartIcon>Ir al Checkout</ShoppingCartIcon></Link>
                         </>
                     )}
                     {cartListItems.map( (item) => {
                         return(
-                            <>
                         <div className='item-cart-prod' key={item.id}>
                             <div className='cart-prod__image'>
                                 <img src={`/${item.image[0]}`} alt="" />
@@ -61,17 +53,12 @@ const CartWidget = () =>  {
                                 </button>
                             </div>
                         </div>
-                        </>
                         )
                     })}
                     
-                            <button>
-                                    <Link to={'/cart'}><ShoppingCartIcon>Ir al Checkout</ShoppingCartIcon></Link>
-                            </button>
                 </div>
             </Menu>
-        </div>
     )
 }
 
-export default CartWidget
+export  default MenuCart;
