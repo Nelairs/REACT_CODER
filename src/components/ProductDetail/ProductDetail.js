@@ -4,13 +4,18 @@ import { useParams, useNavigate, Link  } from 'react-router-dom';
 import { Divider,Button } from '@mui/material';
 import CartContext  from '../../context/CartContext';
 
+
+/* -------------------------------- FIREBASE -------------------------------- */
+import db from '../../utils/firebase.config'
+import  { collection, getDocs, where, query, getDoc, doc} from 'firebase/firestore'
+import { async } from '@firebase/util';
+
 const ProductDetail = ({productos})  =>  {
 
-    const   navigate = useNavigate()
     const   {id}    =   useParams();
-    const [product , setProduct] = useState({})
     const   [count, setCount]   =   useState(1);
     const   [showAddCart,   setShowAddCart] =   useState(true)
+    const [products, setProducts] = useState([])
 
     const {addToCart}   =   useContext(CartContext)
 
@@ -25,30 +30,52 @@ const ProductDetail = ({productos})  =>  {
         setCount(count-1)
     }
 
-    useEffect(() => {
-      
-        //console.log("productFilter: ", productFilter)
-        if(productFilter === undefined){
-            navigate('/notFound')
-        }else {
-            
-            setProduct(productFilter)
-
-        }
+    useEffect( () => {
+        setProducts([])
+        productFilter()
+        
     }, [id])
 
-    const productFilter = productos.find( (product) => {
-        return product.id == id
-    })
+    const getProducts = async () => {
+        const productCollection = collection(db, "productos")
+        const productSnapshot = await getDoc(doc(db, 'productos', id)) 
+        const productList = productSnapshot.docs.map((doc) => {
+            let product = doc.data()
+            product.id = doc.id
+            //console.log("product: ", product)
+            return product
+        })
+        setProducts(productList)
+        console.log(productList)
+        return productList
+    }
 
-    const   {image, title, price,   stock, description}  =   productFilter
+    const productFilter =   async   ()  =>  {
+        const snap = await getDoc(doc(db, 'productos', id))  
+        
+        if (snap.exists()) {
+           
+            //console.log(snap.data())
+            setProducts(snap.data())
+            return snap.data()
+          }else {
+            console.log("No such document")
+          }
+    }
+
+
+ 
+
+    
+    const   {image, title, price,   stock, description}  =   products
+    //console.log(image)
     return  (
         
         <div    className="product-detail-container">
             
             <div    className="img-container">
                 <div    className='img-container-primary'>
-                    <img    src={`../${image[0]}`}></img>
+                    <img    src={`./${image}`}></img>
                 </div>
             </div>
 
