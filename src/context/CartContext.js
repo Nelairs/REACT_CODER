@@ -15,11 +15,16 @@ const CartProvider = ({ children }) => {
     }
     
 }
-
+const deleteProduct = (product) => {
+  // console.log("Producto a eliminar:", product)
+  setCartListItems(cartListItems.filter( (cartProduct) => cartProduct.id !== product.id) )
+  setTotalPrice(totalPrice - product.price)
+}
   const data = {
     cartListItems,
     addToCart,
     totalPrice,
+    deleteProduct
   };
 
   return <CartContext.Provider value={data}>{children}</CartContext.Provider>;

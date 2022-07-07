@@ -8,14 +8,13 @@ import CartContext  from '../../context/CartContext';
 /* -------------------------------- FIREBASE -------------------------------- */
 import db from '../../utils/firebase.config'
 import  { collection, getDocs, where, query, getDoc, doc} from 'firebase/firestore'
-import { async } from '@firebase/util';
 
 const ProductDetail = ({productos})  =>  {
 
     const   {id}    =   useParams();
     const   [count, setCount]   =   useState(1);
     const   [showAddCart,   setShowAddCart] =   useState(true)
-    const [products, setProducts] = useState([])
+    const [products, setProduct] = useState({})
 
     const {addToCart}   =   useContext(CartContext)
 
@@ -30,44 +29,33 @@ const ProductDetail = ({productos})  =>  {
         setCount(count-1)
     }
 
-    useEffect( () => {
-        setProducts([])
-        productFilter()
+    useEffect(() => {
         
+        getProduct()
+        .then( (prod) => {
+            //console.log("Respuesta getProduct: ", prod)
+            setProduct(prod)
+        })
+
     }, [id])
 
-    const getProducts = async () => {
-        const productCollection = collection(db, "productos")
-        const productSnapshot = await getDoc(doc(db, 'productos', id)) 
-        const productList = productSnapshot.docs.map((doc) => {
-            let product = doc.data()
-            product.id = doc.id
-            //console.log("product: ", product)
-            return product
-        })
-        setProducts(productList)
-        console.log(productList)
-        return productList
+    const getProduct = async() => {
+
+        const docRef = doc(db, "stared_products", id)
+        const docSnapshot = await getDoc(docRef)
+        let product = docSnapshot.data()
+        product.id = docSnapshot.id
+        return product
     }
 
-    const productFilter =   async   ()  =>  {
-        const snap = await getDoc(doc(db, 'productos', id))  
-        
-        if (snap.exists()) {
-           
-            //console.log(snap.data())
-            setProducts(snap.data())
-            return snap.data()
-          }else {
-            console.log("No such document")
-          }
-    }
+    const productFilter = () => {products.find( (product) => {
+        return product.id == id
+    })}
 
 
- 
 
     
-    const   {image, title, price,   stock, description}  =   products
+    const   {path, title, price,   stock, description}  =   products
     //console.log(image)
     return  (
         
@@ -75,11 +63,11 @@ const ProductDetail = ({productos})  =>  {
             
             <div    className="img-container">
                 <div    className='img-container-primary'>
-                    <img    src={`./${image}`}></img>
+                <img src={`${path}`} alt={`${title}`}></img>
                 </div>
             </div>
 
-            <div    className="detail-container">
+            <div    className="det-container">
                 <h1>{title}</h1>
                 <Divider/>
                 <h2>${price}</h2>
@@ -105,7 +93,7 @@ const ProductDetail = ({productos})  =>  {
                             <Button onClick={addCount} disabled={count === stock}>+</Button>
                             <Button variant={'text'} className="card-item-button" 
                                 onClick={()  =>  {setShowAddCart(false); 
-                                addToCart({image, title, price,   stock});}}>
+                                addToCart({path, title, price,   stock});}}>
                                 Agregar al carrito
                             </Button>
                         </div>

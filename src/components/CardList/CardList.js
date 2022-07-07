@@ -26,7 +26,7 @@ const CardList = ({title}) => {
 
 
     const getProducts = async () => {
-        const productsCollection = collection(db, "productos")
+        const productsCollection = collection(db, "stared_products")
         const productsSnapshot = await getDocs(productsCollection)
         const productsList = productsSnapshot.docs.map((doc) => {
             let product = doc.data()
@@ -43,10 +43,10 @@ const CardList = ({title}) => {
         <h2>{title}</h2>
         <Grid container >
             {
-            products.map(  ({  title,  price,  image,   stock,  id})    =>  {
+            products.map(  ({  title,   path, id})    =>  {
                 return(
                     <Grid item md={3}>
-                        <CardItem title={title}  price={price}  image={image}    stock={stock}   id={id}/>
+                        <CardItem title={title} image={path} id={id}/>
                     </Grid>
                 )
             })}

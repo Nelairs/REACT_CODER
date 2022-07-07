@@ -10,20 +10,17 @@ import {Link}   from 'react-router-dom';
 const   NavBar  =   ()  =>  {
 
     return(
-        <AppBar position="static"   className='header-primary'>
+        <AppBar position="sticky"   className='header-primary'>
             <Toolbar>
                 <div    className='container-logo'>
-                    <Link to={'/'}><img    src='./3d_icon.png' alt=''/></Link>
+                    <Link to={'/'}><img    src='./logo_ivrea.png' alt=''/></Link>
                 </div>
                 <ul className='navbar'>
                     <li>
                     <Link to={'/'}><Button disableRipple   style={{backgroundColor:    'transparent'}}variant='text'   className='navbar_btn'>Inicio</Button></Link>
                     </li>
-                    <li>
-                        <Link to={'/contacto'}>
-                        <Button disableRipple   style={{backgroundColor:    'transparent'}}variant='text'   className='navbar_btn'>Contacto</Button>
-                        </Link>
-                    </li>
+                  
+                  
                 </ul>
                 <CartWidget/>
             </Toolbar>

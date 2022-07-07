@@ -1,0 +1,23 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-2by2 {
+  width: 100%;
+  height: auto;
+  padding-right: 100px;
+  padding-left: 100px;
+  padding-top: 50px;
+  display: grid !important;
+  grid-template-columns: 325px 325px;
+  grid-template-rows: 300px 300px;
+  justify-content: center;
+}
+
+.container-2by2 > div{
+  max-width: 325px;
+  max-height: 300px;
+}
+

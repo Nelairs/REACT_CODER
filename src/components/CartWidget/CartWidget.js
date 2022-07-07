@@ -1,14 +1,13 @@
 import React,   { useState, useContext } from 'react';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CartContext from '../../context/CartContext.js'
 import { Link } from 'react-router-dom';
 import './CartWidget.css'
 
 const CartWidget = () =>  {
-    const { cartListItems } = useContext(CartContext)
+    const { cartListItems, deleteProduct } = useContext(CartContext)
     const [anchorEl, setAnchorEl] = useState(null);
     const open = Boolean(anchorEl);
     const handleClick = (event) => {
@@ -41,7 +40,6 @@ const CartWidget = () =>  {
                         <>
                             <p>No hay productos agregados al carrito</p>
                             <Link to="/" >Empezar a comprar</Link>
-                            <Link to={'/cart'}><ShoppingCartIcon>Ir al Checkout</ShoppingCartIcon></Link>
                         </>
                     )}
                     {cartListItems.map( (item) => {
@@ -49,14 +47,14 @@ const CartWidget = () =>  {
                             <>
                         <div className='item-cart-prod' key={item.id}>
                             <div className='cart-prod__image'>
-                                <img src={`/${item.image[0]}`} alt="" />
+                            <img src={`.${item.path}`} alt={`${item.title}`}></img>
                             </div>
                             <div className='cart-prod__info'>
                                 <p>{item.title}</p>
                                 <span>$ {item.price}</span>
                             </div>
                             <div className='cart-prod__action'>
-                                <button>
+                                <button onClick={() => deleteProduct(item)}>
                                     <DeleteIcon />
                                 </button>
                             </div>
@@ -64,10 +62,11 @@ const CartWidget = () =>  {
                         </>
                         )
                     })}
-                    
-                            <button>
-                                    <Link to={'/cart'}><ShoppingCartIcon>Ir al Checkout</ShoppingCartIcon></Link>
+                        <div className='cart-button-container'>
+                            <button className='cart-button'>
+                                <Link to={'/cart'}><ShoppingCartIcon>Ir al Checkout</ShoppingCartIcon></Link>
                             </button>
+                        </div>
                 </div>
             </Menu>
         </div>

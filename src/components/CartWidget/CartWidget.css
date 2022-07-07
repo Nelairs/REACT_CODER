@@ -19,3 +19,14 @@
 .cart-prod__info {
     min-width: 120px;
 }
+.cart-button{
+    display: flex;
+    width: 100%;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.cart-button a > svg {
+    display: flex;
+    justify-content: center;
+}

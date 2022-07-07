@@ -27,7 +27,7 @@ const CartDetail = () => {
 
     setState({ ...state, [anchor]: open });
   };
-  const { cartListItems, totalPrice } = useContext(CartContext);
+  const { cartListItems, totalPrice,deleteProduct } = useContext(CartContext);
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -122,11 +122,11 @@ const saveData = async (newOrder) => {
           <h2>Quitar</h2>
         </div>
         {cartListItems.map((item) => {
-          const { id, title, image, price } = item;
+          const { id, title, path, price } = item;
           return (
             <div className="cart-table__content" key={id}>
               <div className="cart-table__content-img">
-                <img src={`/${image[0]}`} />
+              <img src={`${path}`} alt={`${title}`}></img>
               </div>
               <div className="cart-table__content-title">
                 <p>{title}</p>
@@ -138,7 +138,7 @@ const saveData = async (newOrder) => {
                 <p>1</p>
               </div>
               <div className="cart-table__content-price">
-                <button className="btn-delete">
+                <button className="btn-delete" onClick={() => deleteProduct(item)}>
                   <Delete />
                 </button>
               </div>

@@ -3,15 +3,18 @@
     width: 100%;
     border-bottom: #ccc;
     display: flex;
+    list-style-type: none;
 }
 .container-logo {
-    width: 100px;
+    width: 200px;
 }
 .container-logo img {
     width: 100%;
+    height: auto;
+    border: 0;
 }
 .header-primary {
-    background: none !important;
+    background: whitesmoke !important;
     box-shadow: none !important;
     border-bottom: 1px solid #ccc;
 }
